@@ -1,16 +1,18 @@
 import 'package:currency_convertor_app/Commen/app_colors.dart';
 import 'package:currency_convertor_app/Commen/app_textfield.dart';
 import 'package:currency_convertor_app/Functions/fetchrates.dart';
+import 'package:currency_convertor_app/Model/ratemodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AnyToAny extends StatefulWidget {
-  final rates;
-  final Map currencies;
-  const AnyToAny({Key? key, required this.rates, required this.currencies})
-      : super(key: key);
 
+  const AnyToAny({Key? key, required this.ratesdata, required this.currencies})
+      : super(key: key);
+      
+  final RatesModel ratesdata;
+  final Map currencies;
   @override
   _AnyToAnyState createState() => _AnyToAnyState();
 }
@@ -18,8 +20,8 @@ class AnyToAny extends StatefulWidget {
 class _AnyToAnyState extends State<AnyToAny> {
   TextEditingController amountController = TextEditingController();
 
-  String dropdownValue1 = 'AUD';
-  String dropdownValue2 = 'AUD';
+  String dropdownValue1 = 'USD';
+  String dropdownValue2 = 'PKR';
   String answer = 'Converted Currency will be shown here :)';
 
   @override
@@ -140,12 +142,13 @@ class _AnyToAnyState extends State<AnyToAny> {
               Container(
                 child: ElevatedButton(
                   onPressed: () {
+                    // print(amountController.text);
                     setState(() {
                       answer = amountController.text +
                           ' ' +
                           dropdownValue1 +
                           ' ' +
-                          convertany(widget.rates, amountController.text,
+                          convertany(widget.ratesdata.rates, amountController.text,
                               dropdownValue1, dropdownValue2) +
                           ' ' +
                           dropdownValue2;
