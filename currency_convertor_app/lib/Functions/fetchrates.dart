@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 
 Future<RatesModel> fetchrates() async {
   var response = await http.get(Uri.parse(
-      'https://openexchangerates.org/api/latest.json?base=USD&app_id=' + key));
+      'https://openexchangerates.org/api/latest.json?app_id=87008fdae03148a68d4b867e56f40a04'));
+      print(response.statusCode);
   final result = ratesModelFromJson(response.body);
   return result;
 }
