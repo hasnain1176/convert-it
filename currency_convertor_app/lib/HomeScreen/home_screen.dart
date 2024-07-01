@@ -78,7 +78,7 @@ class _HomeViewState extends State<HomeView> {
                             children: [
                               AnyToAny(
                                 currencies: currSnapshot.data!,
-                                rates: snapshot.data?.rates,
+                                ratesdata: snapshot.data!,
                               ),
                             ],
                           );
