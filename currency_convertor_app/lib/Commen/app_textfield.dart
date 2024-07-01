@@ -29,6 +29,7 @@ class _AppTextFromFieldState extends State<AppTextFromField> {
       child: TextFormField(
         style: TextStyle(color: AppColors.blackText),
         keyboardType: widget.keyboardType,
+        controller: widget.controller,
         decoration: InputDecoration(
           hintText: widget.hintText,
 
